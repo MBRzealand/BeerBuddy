@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
     int priceSum;
 
+    Button AcceptButton;
+
 
 
 
@@ -96,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
         total = findViewById(R.id.total);
         totalPrice = findViewById(R.id.totalPrice);
         totalPriceKr = findViewById(R.id.totalPriceKr);
+        AcceptButton = findViewById(R.id.acceptButton);
+
+        AcceptButton.setVisibility(View.GONE);
 
         accepted = false;
         amount = 0;
@@ -375,6 +380,8 @@ public class MainActivity extends AppCompatActivity {
 
             totalPrice.setText(String.valueOf(Integer.parseInt((String) itemOnePrice.getText())));
             totalPriceKr.setText(" kr");
+
+            AcceptButton.setVisibility(View.VISIBLE);
         }
     }
 
@@ -393,6 +400,8 @@ public class MainActivity extends AppCompatActivity {
 
             totalPrice.setText(String.valueOf(priceSum));
             totalPriceKr.setText(" kr");
+
+            AcceptButton.setVisibility(View.VISIBLE);
         }
 
     }
@@ -413,6 +422,8 @@ public class MainActivity extends AppCompatActivity {
 
             totalPrice.setText(String.valueOf(priceSum));
             totalPriceKr.setText(" kr");
+
+            AcceptButton.setVisibility(View.VISIBLE);
 
         }
 
@@ -435,6 +446,8 @@ public class MainActivity extends AppCompatActivity {
 
             totalPrice.setText(String.valueOf(priceSum));
             totalPriceKr.setText(" kr");
+
+            AcceptButton.setVisibility(View.VISIBLE);
         }
 
     }
@@ -457,6 +470,8 @@ public class MainActivity extends AppCompatActivity {
 
             totalPrice.setText(String.valueOf(priceSum));
             totalPriceKr.setText(" kr");
+
+            AcceptButton.setVisibility(View.VISIBLE);
         }
 
     }
@@ -568,10 +583,48 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void accept(View view) {
-        accepted = true;
 
+        accepted = false;
+        amount = 0;
         itemCounter = 0;
+        price = 0;
+        itemID = 0;
+        priceSum = 0;
 
+        itemOne.setText("");
+        itemTwo.setText("");
+        itemThree.setText("");
+        itemFour.setText("");
+        itemFive.setText("");
+
+        itemOneAmount.setText("");
+        itemTwoAmount.setText("");
+        itemThreeAmount.setText("");
+        itemFourAmount.setText("");
+        itemFiveAmount.setText("");
+
+        itemOnePrice.setText("");
+        itemTwoPrice.setText("");
+        itemThreePrice.setText("");
+        itemFourPrice.setText("");
+        itemFivePrice.setText("");
+
+        itemOneKr.setText("");
+        itemTwoKr.setText("");
+        itemThreeKr.setText("");
+        itemFourKr.setText("");
+        itemFiveKr.setText("");
+
+        total.setText("");
+        totalPrice.setText("");
+        totalPriceKr.setText("");
+
+        HideButtons();
         hidePrices();
+
+        displayItem.setText("");
+
+        AcceptButton.setVisibility(View.GONE);
+
     }
 }
