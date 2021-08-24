@@ -70,6 +70,17 @@ public class MainActivity extends AppCompatActivity {
     int itemID;
     int price;
 
+    int ShakerOriginalCount;
+    int ShakerPineappleCount;
+    int ShakerPassionCount;
+    int MokaiCount;
+    int PepsiCount;
+    int PepsiMaxCount;
+    int FaxeKondiCount;
+    int FaxeKondiZeroCount;
+    int TuborgGroenCount;
+    int TuborgClassicCount;
+
     int priceSum;
 
     Button AcceptButton;
@@ -140,6 +151,17 @@ public class MainActivity extends AppCompatActivity {
         price = 0;
         itemID = 0;
         priceSum = 0;
+
+        ShakerOriginalCount = 600;
+        ShakerPineappleCount = 600;
+        ShakerPassionCount = 600;
+        MokaiCount = 600;
+        PepsiCount = 480;
+        PepsiMaxCount = 600;
+        FaxeKondiCount = 480;
+        FaxeKondiZeroCount = 600;
+        TuborgGroenCount = 3600;
+        TuborgClassicCount = 1800;
 
         HideButtons();
         hidePrices();
@@ -666,44 +688,48 @@ public class MainActivity extends AppCompatActivity {
 
             case 1:
                 int tmpvar = Integer.parseInt((String) amountShakerOriginal.getText());
-                amountShakerOriginal.setText("");
-                amountShakerOriginal.setText(String.valueOf(tmpvar-amount));
+                ShakerOriginalCount = tmpvar-amount;
                 break;
             case 2:
                 int tmpvar2 = Integer.parseInt((String) amountShakerPineapple.getText());
-                amountShakerPineapple.setText(String.valueOf(tmpvar2-amount));
+                ShakerPineappleCount = tmpvar2-amount;
                 break;
             case 3:
                 int tmpvar3 = Integer.parseInt((String) amountShakerPassion.getText());
-                amountShakerPassion.setText(String.valueOf(tmpvar3-amount));
+                ShakerPassionCount = tmpvar3-amount;
                 break;
             case 4:
                 int tmpvar4 = Integer.parseInt((String) amountMokai.getText());
-                amountMokai.setText(String.valueOf(tmpvar4-amount));
+                MokaiCount = tmpvar4-amount;
                 break;
             case 5:
+
                 int tmpvar5 = Integer.parseInt((String) amountPepsi.getText());
-                amountPepsi.setText(String.valueOf(tmpvar5-amount));
+                PepsiCount = tmpvar5-amount;
                 break;
             case 6:
+
                 int tmpvar6 = Integer.parseInt((String) amountMAX.getText());
-                amountMAX.setText(String.valueOf(tmpvar6-amount));
+                PepsiMaxCount = tmpvar6-amount;
                 break;
             case 7:
                 int tmpvar7 = Integer.parseInt((String) amountKondi.getText());
-                amountKondi.setText(String.valueOf(tmpvar7-amount));
+                FaxeKondiCount = tmpvar7-amount;
                 break;
             case 8:
+
                 int tmpvar8 = Integer.parseInt((String) amountKondiZero.getText());
-                amountKondiZero.setText(String.valueOf(tmpvar8-amount));
+                FaxeKondiZeroCount = tmpvar8-amount;
                 break;
             case 9:
+
                 int tmpvar9 = Integer.parseInt((String) amountGroen.getText());
-                amountGroen.setText(String.valueOf(tmpvar9-amount));
+                TuborgGroenCount = tmpvar9-amount;
                 break;
             case 10:
+
                 int tmpvar10 = Integer.parseInt((String) amountClassic.getText());
-                amountClassic.setText(String.valueOf(tmpvar10-amount));
+                TuborgClassicCount = tmpvar10-amount;
                 break;
 
             default:
@@ -714,6 +740,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void accept(View view) {
+
+        amountShakerOriginal.setText(String.valueOf(ShakerOriginalCount));
+        amountShakerPineapple.setText(String.valueOf(ShakerPineappleCount));
+        amountShakerPassion.setText(String.valueOf(ShakerPassionCount));
+        amountMokai.setText(String.valueOf(MokaiCount));
+        amountPepsi.setText(String.valueOf(PepsiCount));
+        amountMAX.setText(String.valueOf(PepsiMaxCount));
+        amountKondi.setText(String.valueOf(FaxeKondiCount));
+        amountKondiZero.setText(String.valueOf(FaxeKondiZeroCount));
+        amountGroen.setText(String.valueOf(TuborgGroenCount));
+        amountClassic.setText(String.valueOf(TuborgClassicCount));
 
         accepted = false;
         amount = 0;
