@@ -95,6 +95,17 @@ public class MainActivity extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = preferences.edit();
 
+            ShakerOriginalCount = Integer.parseInt(preferences.getString("ShakerOriginal","600"));
+            ShakerPineappleCount = Integer.parseInt(preferences.getString("ShakerPineapple","600"));
+            ShakerPassionCount = Integer.parseInt(preferences.getString("ShakerPassion","600"));
+            MokaiCount = Integer.parseInt(preferences.getString("Mokai","600"));
+            PepsiCount = Integer.parseInt(preferences.getString("Pepsi","480"));
+            PepsiMaxCount = Integer.parseInt(preferences.getString("PepsiMAX","600"));
+            FaxeKondiCount = Integer.parseInt(preferences.getString("Kondi","480"));
+            FaxeKondiZeroCount = Integer.parseInt(preferences.getString("KondiZero","600"));
+            TuborgGroenCount = Integer.parseInt(preferences.getString("Groen","3600"));
+            TuborgClassicCount = Integer.parseInt(preferences.getString("Classic","1800"));
+
 
         displayItem = findViewById(R.id.textView);
         one = findViewById(R.id.one);
@@ -152,16 +163,7 @@ public class MainActivity extends AppCompatActivity {
         itemID = 0;
         priceSum = 0;
 
-        ShakerOriginalCount = 600;
-        ShakerPineappleCount = 600;
-        ShakerPassionCount = 600;
-        MokaiCount = 600;
-        PepsiCount = 480;
-        PepsiMaxCount = 600;
-        FaxeKondiCount = 480;
-        FaxeKondiZeroCount = 600;
-        TuborgGroenCount = 3600;
-        TuborgClassicCount = 1800;
+
 
         HideButtons();
         hidePrices();
@@ -687,48 +689,62 @@ public class MainActivity extends AppCompatActivity {
         switch(itemID){
 
             case 1:
-                int tmpvar = Integer.parseInt((String) amountShakerOriginal.getText());
+//                int tmpvar = Integer.parseInt((String) amountShakerOriginal.getText());
+                int tmpvar = ShakerOriginalCount;
                 ShakerOriginalCount = tmpvar-amount;
                 break;
+
             case 2:
-                int tmpvar2 = Integer.parseInt((String) amountShakerPineapple.getText());
+//                int tmpvar2 = Integer.parseInt((String) amountShakerPineapple.getText());
+                int tmpvar2 = ShakerPineappleCount;
                 ShakerPineappleCount = tmpvar2-amount;
                 break;
+
             case 3:
-                int tmpvar3 = Integer.parseInt((String) amountShakerPassion.getText());
+//                int tmpvar3 = Integer.parseInt((String) amountShakerPassion.getText());
+                int tmpvar3 = ShakerPassionCount;
                 ShakerPassionCount = tmpvar3-amount;
                 break;
+
             case 4:
-                int tmpvar4 = Integer.parseInt((String) amountMokai.getText());
+//                int tmpvar4 = Integer.parseInt((String) amountMokai.getText());
+                int tmpvar4 = MokaiCount;
                 MokaiCount = tmpvar4-amount;
                 break;
-            case 5:
 
-                int tmpvar5 = Integer.parseInt((String) amountPepsi.getText());
+            case 5:
+//                int tmpvar5 = Integer.parseInt((String) amountPepsi.getText());
+                int tmpvar5 = PepsiCount;
                 PepsiCount = tmpvar5-amount;
                 break;
-            case 6:
 
-                int tmpvar6 = Integer.parseInt((String) amountMAX.getText());
+            case 6:
+//                int tmpvar6 = Integer.parseInt((String) amountMAX.getText());
+                int tmpvar6 = PepsiMaxCount;
                 PepsiMaxCount = tmpvar6-amount;
                 break;
+
             case 7:
-                int tmpvar7 = Integer.parseInt((String) amountKondi.getText());
+//                int tmpvar7 = Integer.parseInt((String) amountKondi.getText());
+                int tmpvar7 = FaxeKondiCount;
                 FaxeKondiCount = tmpvar7-amount;
                 break;
-            case 8:
 
-                int tmpvar8 = Integer.parseInt((String) amountKondiZero.getText());
+            case 8:
+//                int tmpvar8 = Integer.parseInt((String) amountKondiZero.getText());
+                int tmpvar8 = FaxeKondiZeroCount;
                 FaxeKondiZeroCount = tmpvar8-amount;
                 break;
-            case 9:
 
-                int tmpvar9 = Integer.parseInt((String) amountGroen.getText());
+            case 9:
+//                int tmpvar9 = Integer.parseInt((String) amountGroen.getText());
+                int tmpvar9 = TuborgGroenCount;
                 TuborgGroenCount = tmpvar9-amount;
                 break;
-            case 10:
 
-                int tmpvar10 = Integer.parseInt((String) amountClassic.getText());
+            case 10:
+//                int tmpvar10 = Integer.parseInt((String) amountClassic.getText());
+                int tmpvar10 = TuborgClassicCount;
                 TuborgClassicCount = tmpvar10-amount;
                 break;
 
