@@ -2,13 +2,20 @@ package com.example.beerbuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
+
 public class MainActivity extends AppCompatActivity {
+
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     TextView displayItem;
     Button one;
@@ -69,12 +76,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = preferences.edit();
+
+
         displayItem = findViewById(R.id.textView);
         one = findViewById(R.id.one);
         two = findViewById(R.id.two);
@@ -133,6 +143,43 @@ public class MainActivity extends AppCompatActivity {
 
         HideButtons();
         hidePrices();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        editor.putString("ShakerOriginal", (String) amountShakerOriginal.getText());
+        editor.putString("ShakerPineapple", (String) amountShakerPineapple.getText());
+        editor.putString("ShakerPassion", (String) amountShakerPassion.getText());
+        editor.putString("Mokai", (String) amountMokai.getText());
+        editor.putString("Pepsi", (String) amountPepsi.getText());
+        editor.putString("PepsiMAX", (String) amountMAX.getText());
+        editor.putString("Kondi", (String) amountKondi.getText());
+        editor.putString("KondiZero", (String) amountKondiZero.getText());
+        editor.putString("Groen", (String) amountGroen.getText());
+        editor.putString("Classic", (String) amountClassic.getText());
+
+        editor.apply();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        amountShakerOriginal.setText(preferences.getString("ShakerOriginal","600"));
+        amountShakerPineapple.setText(preferences.getString("ShakerPineapple","600"));
+        amountShakerPassion.setText(preferences.getString("ShakerPassion","600"));
+        amountMokai.setText(preferences.getString("Mokai","600"));
+        amountPepsi.setText(preferences.getString("Pepsi","480"));
+        amountMAX.setText(preferences.getString("PepsiMAX","600"));
+        amountKondi.setText(preferences.getString("Kondi","480"));
+        amountKondiZero.setText(preferences.getString("KondiZero","600"));
+        amountGroen.setText(preferences.getString("Groen","3600"));
+        amountClassic.setText(preferences.getString("Classic","1800"));
+
 
     }
 
