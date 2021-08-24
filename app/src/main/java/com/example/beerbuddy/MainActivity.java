@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -84,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
     int priceSum;
 
     Button AcceptButton;
+    ImageButton DeleteButton;
 
 
 
@@ -142,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         totalPrice = findViewById(R.id.totalPrice);
         totalPriceKr = findViewById(R.id.totalPriceKr);
         AcceptButton = findViewById(R.id.acceptButton);
+        DeleteButton = findViewById(R.id.deleteButton);
 
         amountShakerOriginal = findViewById(R.id.amountOriginal);
         amountShakerPineapple = findViewById(R.id.amountPineapple);
@@ -155,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         amountClassic = findViewById(R.id.amountClassic);
 
         AcceptButton.setVisibility(View.GONE);
+        DeleteButton.setVisibility(View.GONE);
 
         accepted = false;
         amount = 0;
@@ -477,6 +481,7 @@ public class MainActivity extends AppCompatActivity {
             totalPriceKr.setText(" kr");
 
             AcceptButton.setVisibility(View.VISIBLE);
+            DeleteButton.setVisibility(View.VISIBLE);
         }
     }
 
@@ -499,6 +504,7 @@ public class MainActivity extends AppCompatActivity {
             totalPriceKr.setText(" kr");
 
             AcceptButton.setVisibility(View.VISIBLE);
+            DeleteButton.setVisibility(View.VISIBLE);
         }
 
     }
@@ -523,6 +529,7 @@ public class MainActivity extends AppCompatActivity {
             totalPriceKr.setText(" kr");
 
             AcceptButton.setVisibility(View.VISIBLE);
+            DeleteButton.setVisibility(View.VISIBLE);
 
         }
 
@@ -549,6 +556,7 @@ public class MainActivity extends AppCompatActivity {
             totalPriceKr.setText(" kr");
 
             AcceptButton.setVisibility(View.VISIBLE);
+            DeleteButton.setVisibility(View.VISIBLE);
         }
 
     }
@@ -575,6 +583,7 @@ public class MainActivity extends AppCompatActivity {
             totalPriceKr.setText(" kr");
 
             AcceptButton.setVisibility(View.VISIBLE);
+            DeleteButton.setVisibility(View.VISIBLE);
         }
 
     }
@@ -809,6 +818,64 @@ public class MainActivity extends AppCompatActivity {
         displayItem.setText("");
 
         AcceptButton.setVisibility(View.GONE);
+        DeleteButton.setVisibility(View.GONE);
 
+    }
+
+    public void deleteOrder(View view) {
+
+        ShakerOriginalCount = Integer.parseInt((String) amountShakerOriginal.getText());
+        ShakerPineappleCount = Integer.parseInt((String) amountShakerPineapple.getText());
+        ShakerPassionCount = Integer.parseInt((String) amountShakerPassion.getText());
+        MokaiCount = Integer.parseInt((String) amountMokai.getText());
+        PepsiCount = Integer.parseInt((String) amountPepsi.getText());
+        PepsiMaxCount = Integer.parseInt((String) amountMAX.getText());
+        FaxeKondiCount = Integer.parseInt((String) amountKondi.getText());
+        FaxeKondiZeroCount = Integer.parseInt((String) amountKondiZero.getText());
+        TuborgGroenCount = Integer.parseInt((String) amountGroen.getText());
+        TuborgClassicCount = Integer.parseInt((String) amountClassic.getText());
+
+        accepted = false;
+        amount = 0;
+        itemCounter = 0;
+        price = 0;
+        itemID = 0;
+        priceSum = 0;
+
+        itemOne.setText("");
+        itemTwo.setText("");
+        itemThree.setText("");
+        itemFour.setText("");
+        itemFive.setText("");
+
+        itemOneAmount.setText("");
+        itemTwoAmount.setText("");
+        itemThreeAmount.setText("");
+        itemFourAmount.setText("");
+        itemFiveAmount.setText("");
+
+        itemOnePrice.setText("");
+        itemTwoPrice.setText("");
+        itemThreePrice.setText("");
+        itemFourPrice.setText("");
+        itemFivePrice.setText("");
+
+        itemOneKr.setText("");
+        itemTwoKr.setText("");
+        itemThreeKr.setText("");
+        itemFourKr.setText("");
+        itemFiveKr.setText("");
+
+        total.setText("");
+        totalPrice.setText("");
+        totalPriceKr.setText("");
+
+        HideButtons();
+        hidePrices();
+
+        displayItem.setText("");
+
+        AcceptButton.setVisibility(View.GONE);
+        DeleteButton.setVisibility(View.GONE);
     }
 }
