@@ -42,6 +42,17 @@ public class MainActivity extends AppCompatActivity {
     TextView itemFourKr;
     TextView itemFiveKr;
 
+    TextView amountShakerOriginal;
+    TextView amountShakerPineapple;
+    TextView amountShakerPassion;
+    TextView amountMokai;
+    TextView amountPepsi;
+    TextView amountMAX;
+    TextView amountKondi;
+    TextView amountKondiZero;
+    TextView amountGroen;
+    TextView amountClassic;
+
     TextView total;
     TextView totalPrice;
     TextView totalPriceKr;
@@ -99,6 +110,17 @@ public class MainActivity extends AppCompatActivity {
         totalPrice = findViewById(R.id.totalPrice);
         totalPriceKr = findViewById(R.id.totalPriceKr);
         AcceptButton = findViewById(R.id.acceptButton);
+
+        amountShakerOriginal = findViewById(R.id.amountOriginal);
+        amountShakerPineapple = findViewById(R.id.amountPineapple);
+        amountShakerPassion = findViewById(R.id.amountPassion);
+        amountMokai = findViewById(R.id.amountMokai);
+        amountPepsi = findViewById(R.id.amountPepsi);
+        amountMAX = findViewById(R.id.amountMax);
+        amountKondi = findViewById(R.id.amountKondi);
+        amountKondiZero = findViewById(R.id.amountKondiZero);
+        amountGroen = findViewById(R.id.amountGroen);
+        amountClassic = findViewById(R.id.amountClassic);
 
         AcceptButton.setVisibility(View.GONE);
 
@@ -374,6 +396,8 @@ public class MainActivity extends AppCompatActivity {
             itemOneAmount.setText(String.valueOf(amount));
 
             findPrice();
+            adjustStorage();
+            itemID = 0;
 
             itemOnePrice.setText(String.valueOf(price*amount));
             itemOneKr.setText(" kr");
@@ -391,6 +415,8 @@ public class MainActivity extends AppCompatActivity {
             itemTwoAmount.setText(String.valueOf(amount));
 
             findPrice();
+            adjustStorage();
+            itemID = 0;
 
             itemTwoPrice.setText(String.valueOf(price*amount));
             itemTwoKr.setText(" kr");
@@ -412,6 +438,8 @@ public class MainActivity extends AppCompatActivity {
             itemThreeAmount.setText(String.valueOf(amount));
 
             findPrice();
+            adjustStorage();
+            itemID = 0;
 
             itemThreePrice.setText(String.valueOf(price*amount));
             itemThreeKr.setText(" kr");
@@ -435,6 +463,8 @@ public class MainActivity extends AppCompatActivity {
             itemFourAmount.setText(String.valueOf(amount));
 
             findPrice();
+            adjustStorage();
+            itemID = 0;
 
             itemFourPrice.setText(String.valueOf(price*amount));
             itemFourKr.setText(" kr");
@@ -458,6 +488,8 @@ public class MainActivity extends AppCompatActivity {
             itemFiveAmount.setText(String.valueOf(amount));
 
             findPrice();
+            adjustStorage();
+            itemID = 0;
 
             itemFivePrice.setText(String.valueOf(price*amount));
             itemFiveKr.setText(" kr");
@@ -578,7 +610,59 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        itemID = 0;
+
+    }
+
+    public void adjustStorage(){
+
+        switch(itemID){
+
+            case 1:
+                int tmpvar = Integer.parseInt((String) amountShakerOriginal.getText());
+                amountShakerOriginal.setText("");
+                amountShakerOriginal.setText(String.valueOf(tmpvar-amount));
+                break;
+            case 2:
+                int tmpvar2 = Integer.parseInt((String) amountShakerPineapple.getText());
+                amountShakerPineapple.setText(String.valueOf(tmpvar2-amount));
+                break;
+            case 3:
+                int tmpvar3 = Integer.parseInt((String) amountShakerPassion.getText());
+                amountShakerPassion.setText(String.valueOf(tmpvar3-amount));
+                break;
+            case 4:
+                int tmpvar4 = Integer.parseInt((String) amountMokai.getText());
+                amountMokai.setText(String.valueOf(tmpvar4-amount));
+                break;
+            case 5:
+                int tmpvar5 = Integer.parseInt((String) amountPepsi.getText());
+                amountPepsi.setText(String.valueOf(tmpvar5-amount));
+                break;
+            case 6:
+                int tmpvar6 = Integer.parseInt((String) amountMAX.getText());
+                amountMAX.setText(String.valueOf(tmpvar6-amount));
+                break;
+            case 7:
+                int tmpvar7 = Integer.parseInt((String) amountKondi.getText());
+                amountKondi.setText(String.valueOf(tmpvar7-amount));
+                break;
+            case 8:
+                int tmpvar8 = Integer.parseInt((String) amountKondiZero.getText());
+                amountKondiZero.setText(String.valueOf(tmpvar8-amount));
+                break;
+            case 9:
+                int tmpvar9 = Integer.parseInt((String) amountGroen.getText());
+                amountGroen.setText(String.valueOf(tmpvar9-amount));
+                break;
+            case 10:
+                int tmpvar10 = Integer.parseInt((String) amountClassic.getText());
+                amountClassic.setText(String.valueOf(tmpvar10-amount));
+                break;
+
+            default:
+                break;
+
+        }
 
     }
 
