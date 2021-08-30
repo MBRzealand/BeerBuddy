@@ -19,70 +19,38 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
     TextView displayItem;
-    Button one;
-    Button two;
-    Button three;
-    Button four;
-    Button five;
-    Button six;
-    Button seven;
-    Button eight;
-    Button nine;
 
-    TextView itemOne;
-    TextView itemTwo;
-    TextView itemThree;
-    TextView itemFour;
-    TextView itemFive;
-    TextView itemOneAmount;
-    TextView itemTwoAmount;
-    TextView itemThreeAmount;
-    TextView itemFourAmount;
-    TextView itemFiveAmount;
-    TextView itemOnePrice;
-    TextView itemTwoPrice;
-    TextView itemThreePrice;
-    TextView itemFourPrice;
-    TextView itemFivePrice;
-    TextView itemOneKr;
-    TextView itemTwoKr;
-    TextView itemThreeKr;
-    TextView itemFourKr;
-    TextView itemFiveKr;
+    // The number buttons for choosing amount of chosen beverage
+    Button one, two, three, four, five, six, seven, eight, nine;
 
-    TextView amountShakerOriginal;
-    TextView amountShakerPineapple;
-    TextView amountShakerPassion;
-    TextView amountMokai;
-    TextView amountPepsi;
-    TextView amountMAX;
-    TextView amountKondi;
-    TextView amountKondiZero;
-    TextView amountGroen;
-    TextView amountClassic;
+    // The 5 displayed items in an order: Name, amount, price, kr-label
+    TextView itemOne, itemTwo, itemThree, itemFour, itemFive;
+    TextView itemOneAmount, itemTwoAmount, itemThreeAmount, itemFourAmount, itemFiveAmount;
+    TextView itemOnePrice, itemTwoPrice, itemThreePrice, itemFourPrice, itemFivePrice;
+    TextView itemOneKr, itemTwoKr, itemThreeKr, itemFourKr, itemFiveKr;
 
+    // Total price of the items in current order
     TextView total;
     TextView totalPrice;
     TextView totalPriceKr;
+
+    // the number TextViews for displaying current amount of alcohol in storage
+    TextView amountShakerOriginal, amountShakerPineapple, amountShakerPassion, amountMokai, amountPepsi,
+            amountMAX, amountKondi, amountKondiZero, amountGroen, amountClassic;
+
+    // Integer Variables for the amount of alcohol in storage
+    int ShakerOriginalCount, ShakerPineappleCount, ShakerPassionCount, MokaiCount, PepsiCount, PepsiMaxCount,
+            FaxeKondiCount, FaxeKondiZeroCount, TuborgGroenCount, TuborgClassicCount;
+
+
 
     Boolean accepted;
     int amount;
     int itemCounter;
     int itemID;
     int price;
-
-    int ShakerOriginalCount;
-    int ShakerPineappleCount;
-    int ShakerPassionCount;
-    int MokaiCount;
-    int PepsiCount;
-    int PepsiMaxCount;
-    int FaxeKondiCount;
-    int FaxeKondiZeroCount;
-    int TuborgGroenCount;
-    int TuborgClassicCount;
-
     int priceSum;
+
 
     Button AcceptButton;
     ImageButton DeleteButton;
@@ -109,53 +77,22 @@ public class MainActivity extends AppCompatActivity {
             TuborgClassicCount = Integer.parseInt(preferences.getString("Classic","1800"));
 
 
-        displayItem = findViewById(R.id.textView);
-        one = findViewById(R.id.one);
-        two = findViewById(R.id.two);
-        three = findViewById(R.id.three);
-        four = findViewById(R.id.four);
-        five = findViewById(R.id.five);
-        six = findViewById(R.id.six);
-        seven = findViewById(R.id.seven);
-        eight = findViewById(R.id.eight);
-        nine = findViewById(R.id.nine);
+            initializeNumberButtons();
+            initializeCurrentOrderTextViews();
+            initializeStorageAmountTextViews();
 
-        itemOne = findViewById(R.id.item1);
-        itemTwo = findViewById(R.id.item2);
-        itemThree = findViewById(R.id.item3);
-        itemFour = findViewById(R.id.item4);
-        itemFive = findViewById(R.id.item5);
-        itemOneAmount = findViewById(R.id.item1Amount);
-        itemTwoAmount = findViewById(R.id.item2Amount);
-        itemThreeAmount = findViewById(R.id.item3Amount);
-        itemFourAmount = findViewById(R.id.item4Amount);
-        itemFiveAmount = findViewById(R.id.item5Amount);
-        itemOnePrice = findViewById(R.id.item1price);
-        itemTwoPrice = findViewById(R.id.item2price);
-        itemThreePrice = findViewById(R.id.item3price);
-        itemFourPrice = findViewById(R.id.item4price);
-        itemFivePrice = findViewById(R.id.item5price);
-        itemOneKr = findViewById(R.id.kr1);
-        itemTwoKr = findViewById(R.id.kr2);
-        itemThreeKr = findViewById(R.id.kr3);
-        itemFourKr = findViewById(R.id.kr4);
-        itemFiveKr = findViewById(R.id.kr5);
+
+            displayItem = findViewById(R.id.textView);
+
+
+
         total = findViewById(R.id.total);
         totalPrice = findViewById(R.id.totalPrice);
         totalPriceKr = findViewById(R.id.totalPriceKr);
         AcceptButton = findViewById(R.id.acceptButton);
         DeleteButton = findViewById(R.id.deleteButton);
 
-        amountShakerOriginal = findViewById(R.id.amountOriginal);
-        amountShakerPineapple = findViewById(R.id.amountPineapple);
-        amountShakerPassion = findViewById(R.id.amountPassion);
-        amountMokai = findViewById(R.id.amountMokai);
-        amountPepsi = findViewById(R.id.amountPepsi);
-        amountMAX = findViewById(R.id.amountMax);
-        amountKondi = findViewById(R.id.amountKondi);
-        amountKondiZero = findViewById(R.id.amountKondiZero);
-        amountGroen = findViewById(R.id.amountGroen);
-        amountClassic = findViewById(R.id.amountClassic);
+
 
         AcceptButton.setVisibility(View.GONE);
         DeleteButton.setVisibility(View.GONE);
@@ -209,6 +146,57 @@ public class MainActivity extends AppCompatActivity {
         amountClassic.setText(preferences.getString("Classic","1800"));
 
 
+    }
+
+    void initializeNumberButtons(){
+        one = findViewById(R.id.one);
+        two = findViewById(R.id.two);
+        three = findViewById(R.id.three);
+        four = findViewById(R.id.four);
+        five = findViewById(R.id.five);
+        six = findViewById(R.id.six);
+        seven = findViewById(R.id.seven);
+        eight = findViewById(R.id.eight);
+        nine = findViewById(R.id.nine);
+    }
+    void initializeCurrentOrderTextViews(){
+
+        itemOne = findViewById(R.id.item1);
+        itemTwo = findViewById(R.id.item2);
+        itemThree = findViewById(R.id.item3);
+        itemFour = findViewById(R.id.item4);
+        itemFive = findViewById(R.id.item5);
+
+        itemOneAmount = findViewById(R.id.item1Amount);
+        itemTwoAmount = findViewById(R.id.item2Amount);
+        itemThreeAmount = findViewById(R.id.item3Amount);
+        itemFourAmount = findViewById(R.id.item4Amount);
+        itemFiveAmount = findViewById(R.id.item5Amount);
+
+        itemOnePrice = findViewById(R.id.item1price);
+        itemTwoPrice = findViewById(R.id.item2price);
+        itemThreePrice = findViewById(R.id.item3price);
+        itemFourPrice = findViewById(R.id.item4price);
+        itemFivePrice = findViewById(R.id.item5price);
+
+        itemOneKr = findViewById(R.id.kr1);
+        itemTwoKr = findViewById(R.id.kr2);
+        itemThreeKr = findViewById(R.id.kr3);
+        itemFourKr = findViewById(R.id.kr4);
+        itemFiveKr = findViewById(R.id.kr5);
+
+    }
+    void initializeStorageAmountTextViews(){
+        amountShakerOriginal = findViewById(R.id.amountOriginal);
+        amountShakerPineapple = findViewById(R.id.amountPineapple);
+        amountShakerPassion = findViewById(R.id.amountPassion);
+        amountMokai = findViewById(R.id.amountMokai);
+        amountPepsi = findViewById(R.id.amountPepsi);
+        amountMAX = findViewById(R.id.amountMax);
+        amountKondi = findViewById(R.id.amountKondi);
+        amountKondiZero = findViewById(R.id.amountKondiZero);
+        amountGroen = findViewById(R.id.amountGroen);
+        amountClassic = findViewById(R.id.amountClassic);
     }
 
     public void ChooseShaker(View view) {
