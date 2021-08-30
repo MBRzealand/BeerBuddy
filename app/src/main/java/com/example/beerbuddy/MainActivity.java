@@ -2,14 +2,12 @@ package com.example.beerbuddy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Switch;
 import android.widget.TextView;
 
 
@@ -106,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        HideButtons();
+        hideNumberButtons();
         hidePrices();
 
     }
@@ -115,18 +113,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        editor.putString("ShakerOriginal", (String) amountShakerOriginal.getText());
-        editor.putString("ShakerPineapple", (String) amountShakerPineapple.getText());
-        editor.putString("ShakerPassion", (String) amountShakerPassion.getText());
-        editor.putString("Mokai", (String) amountMokai.getText());
-        editor.putString("Pepsi", (String) amountPepsi.getText());
-        editor.putString("PepsiMAX", (String) amountMAX.getText());
-        editor.putString("Kondi", (String) amountKondi.getText());
-        editor.putString("KondiZero", (String) amountKondiZero.getText());
-        editor.putString("Groen", (String) amountGroen.getText());
-        editor.putString("Classic", (String) amountClassic.getText());
+        saveData();
 
-        editor.apply();
     }
 
 
@@ -134,17 +122,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        amountShakerOriginal.setText(preferences.getString("ShakerOriginal","600"));
-        amountShakerPineapple.setText(preferences.getString("ShakerPineapple","600"));
-        amountShakerPassion.setText(preferences.getString("ShakerPassion","600"));
-        amountMokai.setText(preferences.getString("Mokai","600"));
-        amountPepsi.setText(preferences.getString("Pepsi","480"));
-        amountMAX.setText(preferences.getString("PepsiMAX","600"));
-        amountKondi.setText(preferences.getString("Kondi","480"));
-        amountKondiZero.setText(preferences.getString("KondiZero","600"));
-        amountGroen.setText(preferences.getString("Groen","3600"));
-        amountClassic.setText(preferences.getString("Classic","1800"));
-
+        retrieveSavedData();
 
     }
 
@@ -198,80 +176,106 @@ public class MainActivity extends AppCompatActivity {
         amountGroen = findViewById(R.id.amountGroen);
         amountClassic = findViewById(R.id.amountClassic);
     }
+    void retrieveSavedData(){
+        amountShakerOriginal.setText(preferences.getString("ShakerOriginal","600"));
+        amountShakerPineapple.setText(preferences.getString("ShakerPineapple","600"));
+        amountShakerPassion.setText(preferences.getString("ShakerPassion","600"));
+        amountMokai.setText(preferences.getString("Mokai","600"));
+        amountPepsi.setText(preferences.getString("Pepsi","480"));
+        amountMAX.setText(preferences.getString("PepsiMAX","600"));
+        amountKondi.setText(preferences.getString("Kondi","480"));
+        amountKondiZero.setText(preferences.getString("KondiZero","600"));
+        amountGroen.setText(preferences.getString("Groen","3600"));
+        amountClassic.setText(preferences.getString("Classic","1800"));
+    }
+    void saveData(){
+        editor.putString("ShakerOriginal", (String) amountShakerOriginal.getText());
+        editor.putString("ShakerPineapple", (String) amountShakerPineapple.getText());
+        editor.putString("ShakerPassion", (String) amountShakerPassion.getText());
+        editor.putString("Mokai", (String) amountMokai.getText());
+        editor.putString("Pepsi", (String) amountPepsi.getText());
+        editor.putString("PepsiMAX", (String) amountMAX.getText());
+        editor.putString("Kondi", (String) amountKondi.getText());
+        editor.putString("KondiZero", (String) amountKondiZero.getText());
+        editor.putString("Groen", (String) amountGroen.getText());
+        editor.putString("Classic", (String) amountClassic.getText());
+
+        editor.apply();
+    }
 
     public void ChooseShaker(View view) {
         displayItem.setText("Cult Shaker Original");
         itemID = 1;
-        ShowButtons();
+        showNumberButtons();
         hidePrices();
     }
 
     public void ChoosePineapple(View view) {
         displayItem.setText("Cult Shaker Pineapple");
         itemID = 2;
-        ShowButtons();
+        showNumberButtons();
         hidePrices();
     }
 
     public void ChoosePassion(View view) {
         displayItem.setText("Cult Shaker Passion");
         itemID = 3;
-        ShowButtons();
+        showNumberButtons();
         hidePrices();
     }
 
     public void ChooseMokai(View view) {
         displayItem.setText("Mokai Cider Hyldeblomst");
         itemID = 4;
-        ShowButtons();
+        showNumberButtons();
         hidePrices();
     }
 
     public void ChoosePepsi(View view) {
         displayItem.setText("Pepsi");
         itemID = 5;
-        ShowButtons();
+        showNumberButtons();
         hidePrices();
     }
 
     public void ChooseMax(View view) {
         displayItem.setText("Pepsi MAX");
         itemID = 6;
-        ShowButtons();
+        showNumberButtons();
         hidePrices();
     }
 
     public void ChooseFaxe(View view) {
         displayItem.setText("Faxe Kondi");
         itemID = 7;
-        ShowButtons();
+        showNumberButtons();
         hidePrices();
     }
 
     public void ChooseZero(View view) {
         displayItem.setText("Faxe Kondi 0 Kalorier");
         itemID = 8;
-        ShowButtons();
+        showNumberButtons();
         hidePrices();
     }
 
     public void ChooseGreen(View view) {
         displayItem.setText("Tuborg Grøn");
         itemID = 9;
-        ShowButtons();
+        showNumberButtons();
         hidePrices();
     }
 
     public void ChooseClassic(View view) {
         displayItem.setText("Tuborg Classic");
         itemID = 10;
-        ShowButtons();
+        showNumberButtons();
         hidePrices();
     }
 
 
 
-    public void ShowButtons(){
+    public void showNumberButtons(){
         one.setVisibility(View.VISIBLE);
         two.setVisibility(View.VISIBLE);
         three.setVisibility(View.VISIBLE);
@@ -283,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
         nine.setVisibility(View.VISIBLE);
     }
 
-    public void HideButtons(){
+    public void hideNumberButtons(){
         one.setVisibility(View.GONE);
         two.setVisibility(View.GONE);
         three.setVisibility(View.GONE);
@@ -297,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void clickOne(View view) {
-        HideButtons();
+        hideNumberButtons();
         amount = 1;
 
         itemCounter += 1;
@@ -314,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickTwo(View view) {
-        HideButtons();
+        hideNumberButtons();
         amount = 2;
 
         itemCounter += 1;
@@ -331,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickThree(View view) {
-        HideButtons();
+        hideNumberButtons();
         amount = 3;
 
         itemCounter += 1;
@@ -348,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickFour(View view) {
-        HideButtons();
+        hideNumberButtons();
         amount = 4;
 
         itemCounter += 1;
@@ -365,7 +369,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickFive(View view) {
-        HideButtons();
+        hideNumberButtons();
         amount = 5;
 
         itemCounter += 1;
@@ -382,7 +386,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickSix(View view) {
-        HideButtons();
+        hideNumberButtons();
         amount = 6;
 
         itemCounter += 1;
@@ -399,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickSeven(View view) {
-        HideButtons();
+        hideNumberButtons();
         amount = 7;
 
         itemCounter += 1;
@@ -416,7 +420,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickEight(View view) {
-        HideButtons();
+        hideNumberButtons();
         amount = 8;
 
         itemCounter += 1;
@@ -433,7 +437,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickNine(View view) {
-        HideButtons();
+        hideNumberButtons();
         amount = 9;
 
         itemCounter += 1;
@@ -800,7 +804,7 @@ public class MainActivity extends AppCompatActivity {
         totalPrice.setText("");
         totalPriceKr.setText("");
 
-        HideButtons();
+        hideNumberButtons();
         hidePrices();
 
         displayItem.setText("");
@@ -858,7 +862,7 @@ public class MainActivity extends AppCompatActivity {
         totalPrice.setText("");
         totalPriceKr.setText("");
 
-        HideButtons();
+        hideNumberButtons();
         hidePrices();
 
         displayItem.setText("");
