@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
             FaxeKondiCount, FaxeKondiZeroCount, TuborgGroenCount, TuborgClassicCount;
 
 
-
-    Boolean accepted;
     int amount;
     int itemCounter;
     int itemID;
@@ -91,11 +89,9 @@ public class MainActivity extends AppCompatActivity {
         DeleteButton = findViewById(R.id.deleteButton);
 
 
-
         AcceptButton.setVisibility(View.GONE);
         DeleteButton.setVisibility(View.GONE);
 
-        accepted = false;
         amount = 0;
         itemCounter = 0;
         price = 0;
@@ -126,148 +122,73 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void initializeNumberButtons(){
-        one = findViewById(R.id.one);
-        two = findViewById(R.id.two);
-        three = findViewById(R.id.three);
-        four = findViewById(R.id.four);
-        five = findViewById(R.id.five);
-        six = findViewById(R.id.six);
-        seven = findViewById(R.id.seven);
-        eight = findViewById(R.id.eight);
-        nine = findViewById(R.id.nine);
-    }
-    void initializeCurrentOrderTextViews(){
 
-        itemOne = findViewById(R.id.item1);
-        itemTwo = findViewById(R.id.item2);
-        itemThree = findViewById(R.id.item3);
-        itemFour = findViewById(R.id.item4);
-        itemFive = findViewById(R.id.item5);
-
-        itemOneAmount = findViewById(R.id.item1Amount);
-        itemTwoAmount = findViewById(R.id.item2Amount);
-        itemThreeAmount = findViewById(R.id.item3Amount);
-        itemFourAmount = findViewById(R.id.item4Amount);
-        itemFiveAmount = findViewById(R.id.item5Amount);
-
-        itemOnePrice = findViewById(R.id.item1price);
-        itemTwoPrice = findViewById(R.id.item2price);
-        itemThreePrice = findViewById(R.id.item3price);
-        itemFourPrice = findViewById(R.id.item4price);
-        itemFivePrice = findViewById(R.id.item5price);
-
-        itemOneKr = findViewById(R.id.kr1);
-        itemTwoKr = findViewById(R.id.kr2);
-        itemThreeKr = findViewById(R.id.kr3);
-        itemFourKr = findViewById(R.id.kr4);
-        itemFiveKr = findViewById(R.id.kr5);
-
-    }
-    void initializeStorageAmountTextViews(){
-        amountShakerOriginal = findViewById(R.id.amountOriginal);
-        amountShakerPineapple = findViewById(R.id.amountPineapple);
-        amountShakerPassion = findViewById(R.id.amountPassion);
-        amountMokai = findViewById(R.id.amountMokai);
-        amountPepsi = findViewById(R.id.amountPepsi);
-        amountMAX = findViewById(R.id.amountMax);
-        amountKondi = findViewById(R.id.amountKondi);
-        amountKondiZero = findViewById(R.id.amountKondiZero);
-        amountGroen = findViewById(R.id.amountGroen);
-        amountClassic = findViewById(R.id.amountClassic);
-    }
-    void retrieveSavedData(){
-        amountShakerOriginal.setText(preferences.getString("ShakerOriginal","600"));
-        amountShakerPineapple.setText(preferences.getString("ShakerPineapple","600"));
-        amountShakerPassion.setText(preferences.getString("ShakerPassion","600"));
-        amountMokai.setText(preferences.getString("Mokai","600"));
-        amountPepsi.setText(preferences.getString("Pepsi","480"));
-        amountMAX.setText(preferences.getString("PepsiMAX","600"));
-        amountKondi.setText(preferences.getString("Kondi","480"));
-        amountKondiZero.setText(preferences.getString("KondiZero","600"));
-        amountGroen.setText(preferences.getString("Groen","3600"));
-        amountClassic.setText(preferences.getString("Classic","1800"));
-    }
-    void saveData(){
-        editor.putString("ShakerOriginal", (String) amountShakerOriginal.getText());
-        editor.putString("ShakerPineapple", (String) amountShakerPineapple.getText());
-        editor.putString("ShakerPassion", (String) amountShakerPassion.getText());
-        editor.putString("Mokai", (String) amountMokai.getText());
-        editor.putString("Pepsi", (String) amountPepsi.getText());
-        editor.putString("PepsiMAX", (String) amountMAX.getText());
-        editor.putString("Kondi", (String) amountKondi.getText());
-        editor.putString("KondiZero", (String) amountKondiZero.getText());
-        editor.putString("Groen", (String) amountGroen.getText());
-        editor.putString("Classic", (String) amountClassic.getText());
-
-        editor.apply();
-    }
 
     public void ChooseShaker(View view) {
-        displayItem.setText("Cult Shaker Original");
+        displayItem.setText(R.string.clt_shk_org);
         itemID = 1;
         showNumberButtons();
         hidePrices();
     }
 
     public void ChoosePineapple(View view) {
-        displayItem.setText("Cult Shaker Pineapple");
+        displayItem.setText(R.string.clt_shk_pin);
         itemID = 2;
         showNumberButtons();
         hidePrices();
     }
 
     public void ChoosePassion(View view) {
-        displayItem.setText("Cult Shaker Passion");
+        displayItem.setText(R.string.clt_shk_pas);
         itemID = 3;
         showNumberButtons();
         hidePrices();
     }
 
     public void ChooseMokai(View view) {
-        displayItem.setText("Mokai Cider Hyldeblomst");
+        displayItem.setText(R.string.mok_cid_hyl);
         itemID = 4;
         showNumberButtons();
         hidePrices();
     }
 
     public void ChoosePepsi(View view) {
-        displayItem.setText("Pepsi");
+        displayItem.setText(R.string.pepsi);
         itemID = 5;
         showNumberButtons();
         hidePrices();
     }
 
     public void ChooseMax(View view) {
-        displayItem.setText("Pepsi MAX");
+        displayItem.setText(R.string.pepsi_max);
         itemID = 6;
         showNumberButtons();
         hidePrices();
     }
 
     public void ChooseFaxe(View view) {
-        displayItem.setText("Faxe Kondi");
+        displayItem.setText(R.string.fax_kond);
         itemID = 7;
         showNumberButtons();
         hidePrices();
     }
 
     public void ChooseZero(View view) {
-        displayItem.setText("Faxe Kondi 0 Kalorier");
+        displayItem.setText(R.string.fax_kond_zero);
         itemID = 8;
         showNumberButtons();
         hidePrices();
     }
 
     public void ChooseGreen(View view) {
-        displayItem.setText("Tuborg Grøn");
+        displayItem.setText(R.string.tub_groen);
         itemID = 9;
         showNumberButtons();
         hidePrices();
     }
 
     public void ChooseClassic(View view) {
-        displayItem.setText("Tuborg Classic");
+        displayItem.setText(R.string.tub_clas);
         itemID = 10;
         showNumberButtons();
         hidePrices();
@@ -314,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
 
         showPrices();
 
-        displayItem.setText("Pris Overblik");
+        displayItem.setText(R.string.pris_overblik);
     }
 
     public void clickTwo(View view) {
@@ -331,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
 
         showPrices();
 
-        displayItem.setText("Pris Overblik");
+        displayItem.setText(R.string.pris_overblik);
     }
 
     public void clickThree(View view) {
@@ -348,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
 
         showPrices();
 
-        displayItem.setText("Pris Overblik");
+        displayItem.setText(R.string.pris_overblik);
     }
 
     public void clickFour(View view) {
@@ -365,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
 
         showPrices();
 
-        displayItem.setText("Pris Overblik");
+        displayItem.setText(R.string.pris_overblik);
     }
 
     public void clickFive(View view) {
@@ -382,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
 
         showPrices();
 
-        displayItem.setText("Pris Overblik");
+        displayItem.setText(R.string.pris_overblik);
     }
 
     public void clickSix(View view) {
@@ -399,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
 
         showPrices();
 
-        displayItem.setText("Pris Overblik");
+        displayItem.setText(R.string.pris_overblik);
     }
 
     public void clickSeven(View view) {
@@ -416,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
 
         showPrices();
 
-        displayItem.setText("Pris Overblik");
+        displayItem.setText(R.string.pris_overblik);
     }
 
     public void clickEight(View view) {
@@ -433,7 +354,7 @@ public class MainActivity extends AppCompatActivity {
 
         showPrices();
 
-        displayItem.setText("Pris Overblik");
+        displayItem.setText(R.string.pris_overblik);
     }
 
     public void clickNine(View view) {
@@ -450,7 +371,7 @@ public class MainActivity extends AppCompatActivity {
 
         showPrices();
 
-        displayItem.setText("Pris Overblik");
+        displayItem.setText(R.string.pris_overblik);
     }
 
 
@@ -641,6 +562,119 @@ public class MainActivity extends AppCompatActivity {
         totalPriceKr.setVisibility(View.VISIBLE);
     }
 
+    void initializeNumberButtons(){
+        one = findViewById(R.id.one);
+        two = findViewById(R.id.two);
+        three = findViewById(R.id.three);
+        four = findViewById(R.id.four);
+        five = findViewById(R.id.five);
+        six = findViewById(R.id.six);
+        seven = findViewById(R.id.seven);
+        eight = findViewById(R.id.eight);
+        nine = findViewById(R.id.nine);
+    }
+
+    void initializeCurrentOrderTextViews(){
+
+        itemOne = findViewById(R.id.item1);
+        itemTwo = findViewById(R.id.item2);
+        itemThree = findViewById(R.id.item3);
+        itemFour = findViewById(R.id.item4);
+        itemFive = findViewById(R.id.item5);
+
+        itemOneAmount = findViewById(R.id.item1Amount);
+        itemTwoAmount = findViewById(R.id.item2Amount);
+        itemThreeAmount = findViewById(R.id.item3Amount);
+        itemFourAmount = findViewById(R.id.item4Amount);
+        itemFiveAmount = findViewById(R.id.item5Amount);
+
+        itemOnePrice = findViewById(R.id.item1price);
+        itemTwoPrice = findViewById(R.id.item2price);
+        itemThreePrice = findViewById(R.id.item3price);
+        itemFourPrice = findViewById(R.id.item4price);
+        itemFivePrice = findViewById(R.id.item5price);
+
+        itemOneKr = findViewById(R.id.kr1);
+        itemTwoKr = findViewById(R.id.kr2);
+        itemThreeKr = findViewById(R.id.kr3);
+        itemFourKr = findViewById(R.id.kr4);
+        itemFiveKr = findViewById(R.id.kr5);
+
+    }
+
+    void initializeStorageAmountTextViews(){
+        amountShakerOriginal = findViewById(R.id.amountOriginal);
+        amountShakerPineapple = findViewById(R.id.amountPineapple);
+        amountShakerPassion = findViewById(R.id.amountPassion);
+        amountMokai = findViewById(R.id.amountMokai);
+        amountPepsi = findViewById(R.id.amountPepsi);
+        amountMAX = findViewById(R.id.amountMax);
+        amountKondi = findViewById(R.id.amountKondi);
+        amountKondiZero = findViewById(R.id.amountKondiZero);
+        amountGroen = findViewById(R.id.amountGroen);
+        amountClassic = findViewById(R.id.amountClassic);
+    }
+
+    void retrieveSavedData(){
+        amountShakerOriginal.setText(preferences.getString("ShakerOriginal","600"));
+        amountShakerPineapple.setText(preferences.getString("ShakerPineapple","600"));
+        amountShakerPassion.setText(preferences.getString("ShakerPassion","600"));
+        amountMokai.setText(preferences.getString("Mokai","600"));
+        amountPepsi.setText(preferences.getString("Pepsi","480"));
+        amountMAX.setText(preferences.getString("PepsiMAX","600"));
+        amountKondi.setText(preferences.getString("Kondi","480"));
+        amountKondiZero.setText(preferences.getString("KondiZero","600"));
+        amountGroen.setText(preferences.getString("Groen","3600"));
+        amountClassic.setText(preferences.getString("Classic","1800"));
+    }
+
+    void saveData(){
+        editor.putString("ShakerOriginal", (String) amountShakerOriginal.getText());
+        editor.putString("ShakerPineapple", (String) amountShakerPineapple.getText());
+        editor.putString("ShakerPassion", (String) amountShakerPassion.getText());
+        editor.putString("Mokai", (String) amountMokai.getText());
+        editor.putString("Pepsi", (String) amountPepsi.getText());
+        editor.putString("PepsiMAX", (String) amountMAX.getText());
+        editor.putString("Kondi", (String) amountKondi.getText());
+        editor.putString("KondiZero", (String) amountKondiZero.getText());
+        editor.putString("Groen", (String) amountGroen.getText());
+        editor.putString("Classic", (String) amountClassic.getText());
+
+        editor.apply();
+    }
+
+    void resetTextViews(){
+        itemOne.setText("");
+        itemTwo.setText("");
+        itemThree.setText("");
+        itemFour.setText("");
+        itemFive.setText("");
+
+        itemOneAmount.setText("");
+        itemTwoAmount.setText("");
+        itemThreeAmount.setText("");
+        itemFourAmount.setText("");
+        itemFiveAmount.setText("");
+
+        itemOnePrice.setText("");
+        itemTwoPrice.setText("");
+        itemThreePrice.setText("");
+        itemFourPrice.setText("");
+        itemFivePrice.setText("");
+
+        itemOneKr.setText("");
+        itemTwoKr.setText("");
+        itemThreeKr.setText("");
+        itemFourKr.setText("");
+        itemFiveKr.setText("");
+
+        total.setText("");
+        totalPrice.setText("");
+        totalPriceKr.setText("");
+
+        displayItem.setText("");
+    }
+
     public void findPrice(){
 
         switch(itemID){
@@ -769,45 +803,19 @@ public class MainActivity extends AppCompatActivity {
         amountGroen.setText(String.valueOf(TuborgGroenCount));
         amountClassic.setText(String.valueOf(TuborgClassicCount));
 
-        accepted = false;
+
         amount = 0;
         itemCounter = 0;
         price = 0;
         itemID = 0;
         priceSum = 0;
 
-        itemOne.setText("");
-        itemTwo.setText("");
-        itemThree.setText("");
-        itemFour.setText("");
-        itemFive.setText("");
-
-        itemOneAmount.setText("");
-        itemTwoAmount.setText("");
-        itemThreeAmount.setText("");
-        itemFourAmount.setText("");
-        itemFiveAmount.setText("");
-
-        itemOnePrice.setText("");
-        itemTwoPrice.setText("");
-        itemThreePrice.setText("");
-        itemFourPrice.setText("");
-        itemFivePrice.setText("");
-
-        itemOneKr.setText("");
-        itemTwoKr.setText("");
-        itemThreeKr.setText("");
-        itemFourKr.setText("");
-        itemFiveKr.setText("");
-
-        total.setText("");
-        totalPrice.setText("");
-        totalPriceKr.setText("");
+        resetTextViews();
 
         hideNumberButtons();
         hidePrices();
 
-        displayItem.setText("");
+
 
         AcceptButton.setVisibility(View.GONE);
         DeleteButton.setVisibility(View.GONE);
@@ -827,45 +835,16 @@ public class MainActivity extends AppCompatActivity {
         TuborgGroenCount = Integer.parseInt((String) amountGroen.getText());
         TuborgClassicCount = Integer.parseInt((String) amountClassic.getText());
 
-        accepted = false;
         amount = 0;
         itemCounter = 0;
         price = 0;
         itemID = 0;
         priceSum = 0;
 
-        itemOne.setText("");
-        itemTwo.setText("");
-        itemThree.setText("");
-        itemFour.setText("");
-        itemFive.setText("");
-
-        itemOneAmount.setText("");
-        itemTwoAmount.setText("");
-        itemThreeAmount.setText("");
-        itemFourAmount.setText("");
-        itemFiveAmount.setText("");
-
-        itemOnePrice.setText("");
-        itemTwoPrice.setText("");
-        itemThreePrice.setText("");
-        itemFourPrice.setText("");
-        itemFivePrice.setText("");
-
-        itemOneKr.setText("");
-        itemTwoKr.setText("");
-        itemThreeKr.setText("");
-        itemFourKr.setText("");
-        itemFiveKr.setText("");
-
-        total.setText("");
-        totalPrice.setText("");
-        totalPriceKr.setText("");
+        resetTextViews();
 
         hideNumberButtons();
         hidePrices();
-
-        displayItem.setText("");
 
         AcceptButton.setVisibility(View.GONE);
         DeleteButton.setVisibility(View.GONE);

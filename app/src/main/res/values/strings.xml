@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Zealand BeerBuddy</string>
+    <string name="clt_shk_org">Cult Shaker Original</string>
+    <string name="clt_shk_pin">Cult Shaker Pineapple</string>
+    <string name="clt_shk_pas">Cult Shaker Passion</string>
+    <string name="mok_cid_hyl">Mokai Cider Hyldeblomst</string>
+    <string name="pepsi">Pepsi</string>
+    <string name="pepsi_max">Pepsi MAX</string>
+    <string name="fax_kond">Faxe Kondi</string>
+    <string name="fax_kond_zero">Faxe Kondi 0 Kalorier</string>
+    <string name="tub_groen">Tuborg Grøn</string>
+    <string name="tub_clas">Tuborg Classic</string>
+    <string name="pris_overblik">Pris Overblik</string>
 </resources>
