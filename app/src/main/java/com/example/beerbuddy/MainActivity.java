@@ -89,18 +89,12 @@ public class MainActivity extends AppCompatActivity {
         DeleteButton = findViewById(R.id.deleteButton);
 
 
-        AcceptButton.setVisibility(View.GONE);
-        DeleteButton.setVisibility(View.GONE);
+        hideUIButtons();
 
-        amount = 0;
-        itemCounter = 0;
-        price = 0;
-        itemID = 0;
-        priceSum = 0;
-
-
+        resetClassVariables();
 
         hideNumberButtons();
+
         hidePrices();
 
     }
@@ -388,13 +382,13 @@ public class MainActivity extends AppCompatActivity {
             itemID = 0;
 
             itemOnePrice.setText(String.valueOf(price*amount));
-            itemOneKr.setText(" kr");
+            itemOneKr.setText(R.string.krTag);
 
             totalPrice.setText(String.valueOf(Integer.parseInt((String) itemOnePrice.getText())));
-            totalPriceKr.setText(" kr");
+            totalPriceKr.setText(R.string.krTag);
 
-            AcceptButton.setVisibility(View.VISIBLE);
-            DeleteButton.setVisibility(View.VISIBLE);
+            showUIButtons();
+
         }
     }
 
@@ -408,16 +402,16 @@ public class MainActivity extends AppCompatActivity {
             itemID = 0;
 
             itemTwoPrice.setText(String.valueOf(price*amount));
-            itemTwoKr.setText(" kr");
+            itemTwoKr.setText(R.string.krTag);
 
             priceSum = ( Integer.parseInt((String) itemOnePrice.getText()))  +
                     ( Integer.parseInt((String) itemTwoPrice.getText()));
 
             totalPrice.setText(String.valueOf(priceSum));
-            totalPriceKr.setText(" kr");
+            totalPriceKr.setText(R.string.krTag);
 
-            AcceptButton.setVisibility(View.VISIBLE);
-            DeleteButton.setVisibility(View.VISIBLE);
+            showUIButtons();
+
         }
 
     }
@@ -432,17 +426,16 @@ public class MainActivity extends AppCompatActivity {
             itemID = 0;
 
             itemThreePrice.setText(String.valueOf(price*amount));
-            itemThreeKr.setText(" kr");
+            itemThreeKr.setText(R.string.krTag);
 
             priceSum = ( Integer.parseInt((String) itemOnePrice.getText())) +
                     ( Integer.parseInt((String) itemTwoPrice.getText())) +
                     ( Integer.parseInt((String) itemThreePrice.getText()));
 
             totalPrice.setText(String.valueOf(priceSum));
-            totalPriceKr.setText(" kr");
+            totalPriceKr.setText(R.string.krTag);
 
-            AcceptButton.setVisibility(View.VISIBLE);
-            DeleteButton.setVisibility(View.VISIBLE);
+            showUIButtons();
 
         }
 
@@ -458,7 +451,7 @@ public class MainActivity extends AppCompatActivity {
             itemID = 0;
 
             itemFourPrice.setText(String.valueOf(price*amount));
-            itemFourKr.setText(" kr");
+            itemFourKr.setText(R.string.krTag);
 
             priceSum = ( Integer.parseInt((String) itemOnePrice.getText())) +
                     ( Integer.parseInt((String) itemTwoPrice.getText())) +
@@ -466,10 +459,10 @@ public class MainActivity extends AppCompatActivity {
                     ( Integer.parseInt((String) itemFourPrice.getText()));
 
             totalPrice.setText(String.valueOf(priceSum));
-            totalPriceKr.setText(" kr");
+            totalPriceKr.setText(R.string.krTag);
 
-            AcceptButton.setVisibility(View.VISIBLE);
-            DeleteButton.setVisibility(View.VISIBLE);
+            showUIButtons();
+
         }
 
     }
@@ -484,7 +477,7 @@ public class MainActivity extends AppCompatActivity {
             itemID = 0;
 
             itemFivePrice.setText(String.valueOf(price*amount));
-            itemFiveKr.setText(" kr");
+            itemFiveKr.setText(R.string.krTag);
 
             priceSum = ( Integer.parseInt((String) itemOnePrice.getText())) +
                     ( Integer.parseInt((String) itemTwoPrice.getText())) +
@@ -493,10 +486,10 @@ public class MainActivity extends AppCompatActivity {
                     ( Integer.parseInt((String) itemFivePrice.getText()));
 
             totalPrice.setText(String.valueOf(priceSum));
-            totalPriceKr.setText(" kr");
+            totalPriceKr.setText(R.string.krTag);
 
-            AcceptButton.setVisibility(View.VISIBLE);
-            DeleteButton.setVisibility(View.VISIBLE);
+            showUIButtons();
+
         }
 
     }
@@ -675,7 +668,7 @@ public class MainActivity extends AppCompatActivity {
         displayItem.setText("");
     }
 
-    public void findPrice(){
+    void findPrice(){
 
         switch(itemID){
 
@@ -719,7 +712,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void adjustStorage(){
+    void adjustStorage(){
 
         switch(itemID){
 
@@ -790,7 +783,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void accept(View view) {
+    void updateOrder(){
 
         amountShakerOriginal.setText(String.valueOf(ShakerOriginalCount));
         amountShakerPineapple.setText(String.valueOf(ShakerPineappleCount));
@@ -803,27 +796,9 @@ public class MainActivity extends AppCompatActivity {
         amountGroen.setText(String.valueOf(TuborgGroenCount));
         amountClassic.setText(String.valueOf(TuborgClassicCount));
 
-
-        amount = 0;
-        itemCounter = 0;
-        price = 0;
-        itemID = 0;
-        priceSum = 0;
-
-        resetTextViews();
-
-        hideNumberButtons();
-        hidePrices();
-
-
-
-        AcceptButton.setVisibility(View.GONE);
-        DeleteButton.setVisibility(View.GONE);
-
     }
 
-    public void deleteOrder(View view) {
-
+    void resetStorageToBeforeCurrentOrder(){
         ShakerOriginalCount = Integer.parseInt((String) amountShakerOriginal.getText());
         ShakerPineappleCount = Integer.parseInt((String) amountShakerPineapple.getText());
         ShakerPassionCount = Integer.parseInt((String) amountShakerPassion.getText());
@@ -834,19 +809,55 @@ public class MainActivity extends AppCompatActivity {
         FaxeKondiZeroCount = Integer.parseInt((String) amountKondiZero.getText());
         TuborgGroenCount = Integer.parseInt((String) amountGroen.getText());
         TuborgClassicCount = Integer.parseInt((String) amountClassic.getText());
+    }
 
+    void resetClassVariables(){
         amount = 0;
         itemCounter = 0;
         price = 0;
         itemID = 0;
         priceSum = 0;
+    }
+
+    void hideUIButtons(){
+        AcceptButton.setVisibility(View.GONE);
+        DeleteButton.setVisibility(View.GONE);
+    }
+
+    void showUIButtons(){
+        AcceptButton.setVisibility(View.VISIBLE);
+        DeleteButton.setVisibility(View.VISIBLE);
+    }
+
+    public void accept(View view) {
+
+        updateOrder();
+
+        resetClassVariables();
 
         resetTextViews();
 
         hideNumberButtons();
+
         hidePrices();
 
-        AcceptButton.setVisibility(View.GONE);
-        DeleteButton.setVisibility(View.GONE);
+        hideUIButtons();
+
+    }
+
+    public void deleteOrder(View view) {
+
+        resetStorageToBeforeCurrentOrder();
+
+        resetClassVariables();
+
+        resetTextViews();
+
+        hideNumberButtons();
+
+        hidePrices();
+
+        hideUIButtons();
+
     }
 }

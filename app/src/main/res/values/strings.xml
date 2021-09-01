@@ -11,4 +11,5 @@
     <string name="tub_groen">Tuborg Grøn</string>
     <string name="tub_clas">Tuborg Classic</string>
     <string name="pris_overblik">Pris Overblik</string>
+    <string name="krTag">\" kr\"</string>
 </resources>
